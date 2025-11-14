@@ -28,6 +28,37 @@ ls -la .actor/
 # - INPUT_SCHEMA.json
 ```
 
+### Error: "File '.actor/default' does not exist"
+
+**Problem**: Apify cannot find a file called ".actor/default".
+
+**Cause**: Incorrect configuration in `.actor/actor.json`:
+- Storage configuration referencing "default" as a string
+- Missing `dockerfile` field
+- Incorrect `main` field pointing to non-existent file
+
+**Solution**: Update `.actor/actor.json`:
+```json
+{
+  "actorSpecification": 1,
+  "dockerfile": "./Dockerfile",
+  "dockerImage": "apify/actor-node:20",
+  "storages": {
+    "dataset": {
+      "maxAgeDays": 30
+    }
+  },
+  "input": "./INPUT_SCHEMA.json"
+}
+```
+
+**Verification**:
+```bash
+# Check actor.json has correct format
+cat .actor/actor.json | grep dockerfile
+# Should output: "dockerfile": "./Dockerfile"
+```
+
 ### Error: "Docker build failed"
 
 **Problem**: Docker cannot build the actor image.

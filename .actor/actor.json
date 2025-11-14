@@ -5,65 +5,16 @@
   "description": "Discovers and catalogs Model Context Protocol (MCP) servers across GitHub, NPM, and PyPI with deduplication, categorization, and compatibility information.",
   "version": "1.0.0",
   "buildTag": "latest",
-  "main": "main.js",
-  "dockerImage": "apify/actor-node:20-chrome",
+  "dockerfile": "./Dockerfile",
+  "dockerImage": "apify/actor-node:20",
   "environment": {
     "APIFY_MEMORY_MBYTES": 4096,
     "APIFY_TIMEOUT_SECS": 3600
   },
-  "resources": {
-    "monitoringApiErrorRate": 10,
-    "monitoringMemoryBytes": 268435456
-  },
   "storages": {
-    "dataset": "default",
-    "keyValueStore": "default",
-    "requestQueue": "default"
-  },
-  "env": {
-    "GITHUB_TOKEN": {
-      "type": "string",
-      "required": false,
-      "description": "Optional GitHub token to increase rate limits"
-    },
-    "LOG_LEVEL": {
-      "type": "string",
-      "required": false,
-      "default": "INFO"
+    "dataset": {
+      "maxAgeDays": 30
     }
   },
-  "input": {
-    "title": "Input",
-    "schemaVersion": 1,
-    "type": "object",
-    "properties": {
-      "sources": {
-        "title": "Sources",
-        "description": "Which sources to search for MCP servers",
-        "type": "array",
-        "editor": "select",
-        "items": { "type": "string", "enum": ["github","npm","pypi"] }
-      },
-      "maxServers": {
-        "title": "Max Servers",
-        "description": "Maximum number of servers to discover",
-        "type": "integer",
-        "editor": "number",
-        "minimum": 1
-      },
-      "includeReadme": {
-        "title": "Include README",
-        "description": "Whether to include README content in the output",
-        "type": "boolean",
-        "editor": "checkbox"
-      },
-      "githubToken": {
-        "title": "GitHub Token",
-        "description": "Optional GitHub token to increase rate limits",
-        "type": "string",
-        "editor": "textfield"
-      }
-    },
-    "additionalProperties": true
-  }
+  "input": "./INPUT_SCHEMA.json"
 }
