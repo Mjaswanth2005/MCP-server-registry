@@ -13,6 +13,7 @@
   },
   "storages": {
     "dataset": {
+      "actorSpecification": 1,
       "maxAgeDays": 30
     }
   },
