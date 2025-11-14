@@ -10,7 +10,9 @@ All core functionality has been implemented, tested, and documented. The actor i
 - Apify actor project structure
 - TypeScript configuration with strict type checking
 - Actor configuration (`.actor/actor.json`)
-- Input schema with all parameters (`INPUT_SCHEMA.json`)
+- Input schema with all parameters (`.actor/INPUT_SCHEMA.json`)
+- Dockerfile for Apify platform deployment
+- .dockerignore for optimized builds
 - Build and development scripts
 
 ### 2. Data Models ✅

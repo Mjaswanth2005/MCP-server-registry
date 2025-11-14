@@ -1,0 +1,38 @@
+{
+	"name": "@mastra/mcp",
+	"description": "Model Context Protocol (MCP) client implementation for Mastra, providing seamless integration with MCP-compatible AI models and tools.",
+	"version": "0.14.2",
+	"sourceUrl": "https://www.npmjs.com/package/@mastra/mcp",
+	"source": "npm",
+	"downloads": {
+		"npm": 1.79
+	},
+	"license": "Apache-2.0",
+	"repository": "git+https://github.com/mastra-ai/mastra.git",
+	"keywords": [],
+	"lastUpdated": "2025-11-05T19:58:35.683Z",
+	"categories": [
+		"AI & ML",
+		"Integration & Orchestration"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"npm": {
+			"command": "npm install @mastra/mcp@0.14.2",
+			"package": "@mastra/mcp",
+			"version": "0.14.2"
+		},
+		"configExample": "{\n  \"mcpServers\": {\n    \"@mastra/mcp\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"@mastra/mcp\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "mastra-mcp",
+	"sourceUrls": {
+		"npm": "https://www.npmjs.com/package/@mastra/mcp"
+	}
+}

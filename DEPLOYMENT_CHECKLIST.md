@@ -17,12 +17,15 @@ Use this checklist before deploying the MCP Server Registry Actor to production.
   - [x] Memory limit set (4096 MB)
   - [x] Timeout set (3600 seconds)
   - [x] Dataset retention configured (30 days)
-- [x] `INPUT_SCHEMA.json` validated
+- [x] `.actor/INPUT_SCHEMA.json` validated
   - [x] All parameters documented
   - [x] Default values set
   - [x] Secret fields marked (githubToken)
+  - [x] Located in .actor/ directory (required by Apify)
 - [x] `package.json` dependencies up to date
 - [x] `tsconfig.json` strict mode enabled
+- [x] `Dockerfile` created for Apify platform
+- [x] `.dockerignore` configured
 
 ### Documentation
 - [x] README.md complete with examples

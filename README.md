@@ -302,6 +302,8 @@ src/
 - **[Quick Start Guide](QUICKSTART.md)** - Get up and running in minutes
 - **[Testing Guide](TESTING.md)** - Comprehensive testing documentation
 - **[Implementation Summary](IMPLEMENTATION_SUMMARY.md)** - Architecture and technical details
+- **[Troubleshooting Guide](TROUBLESHOOTING.md)** - Common issues and solutions
+- **[Deployment Checklist](DEPLOYMENT_CHECKLIST.md)** - Pre-deployment verification
 
 ## Development
 

@@ -1,0 +1,45 @@
+{
+	"name": "n8n-nodes-mcp",
+	"description": "MCP nodes for n8n",
+	"version": "0.1.29",
+	"sourceUrl": "https://www.npmjs.com/package/n8n-nodes-mcp",
+	"source": "npm",
+	"downloads": {
+		"npm": 1.81
+	},
+	"license": "MIT",
+	"repository": "git+https://github.com/nerding-io/n8n-nodes-mcp.git",
+	"keywords": [
+		"n8n-community-node-package",
+		"mcp",
+		"mcp-client",
+		"mcp-client-node",
+		"mcp-client-n8n",
+		"mcp-client-n8n-node",
+		"mcp-client-n8n-node-package"
+	],
+	"lastUpdated": "2025-07-21T01:48:43.917Z",
+	"categories": [
+		"Uncategorized"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"npm": {
+			"command": "npm install n8n-nodes-mcp@0.1.29",
+			"package": "n8n-nodes-mcp",
+			"version": "0.1.29"
+		},
+		"configExample": "{\n  \"mcpServers\": {\n    \"n8nNodesMcp\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"n8n-nodes-mcp\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "n8n-nodes-mcp",
+	"sourceUrls": {
+		"npm": "https://www.npmjs.com/package/n8n-nodes-mcp"
+	}
+}

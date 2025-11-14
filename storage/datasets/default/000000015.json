@@ -1,0 +1,37 @@
+{
+	"name": "@expo/mcp-tunnel",
+	"description": "Expo MCP tunnel client",
+	"version": "0.1.0",
+	"sourceUrl": "https://www.npmjs.com/package/@expo/mcp-tunnel",
+	"source": "npm",
+	"downloads": {
+		"npm": 2.13
+	},
+	"license": "MIT",
+	"repository": "https://github.com/expo/expo-mcp.git",
+	"keywords": [],
+	"lastUpdated": "2025-10-28T16:04:03.062Z",
+	"categories": [
+		"Uncategorized"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"npm": {
+			"command": "npm install @expo/mcp-tunnel@0.1.0",
+			"package": "@expo/mcp-tunnel",
+			"version": "0.1.0"
+		},
+		"configExample": "{\n  \"mcpServers\": {\n    \"@expo/mcpTunnel\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"@expo/mcp-tunnel\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "expo-mcp-tunnel",
+	"sourceUrls": {
+		"npm": "https://www.npmjs.com/package/@expo/mcp-tunnel"
+	}
+}

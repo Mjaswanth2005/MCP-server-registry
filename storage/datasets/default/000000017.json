@@ -1,0 +1,42 @@
+{
+	"name": "mcp-handler",
+	"description": "Vercel MCP Adapter for Next.js and other frameworks",
+	"version": "1.0.3",
+	"sourceUrl": "https://www.npmjs.com/package/mcp-handler",
+	"source": "npm",
+	"downloads": {
+		"npm": 1.75
+	},
+	"license": "Apache-2.0",
+	"repository": "git+https://github.com/vercel/mcp-handler.git",
+	"keywords": [
+		"mcp",
+		"vercel",
+		"next.js",
+		"ai"
+	],
+	"lastUpdated": "2025-10-10T22:24:48.813Z",
+	"categories": [
+		"AI & ML"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"npm": {
+			"command": "npm install mcp-handler@1.0.3",
+			"package": "mcp-handler",
+			"version": "1.0.3"
+		},
+		"configExample": "{\n  \"mcpServers\": {\n    \"mcpHandler\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"mcp-handler\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "mcp-handler",
+	"sourceUrls": {
+		"npm": "https://www.npmjs.com/package/mcp-handler"
+	}
+}

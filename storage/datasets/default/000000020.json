@@ -1,0 +1,52 @@
+{
+	"name": "mcp",
+	"description": "Model Context Protocol SDK",
+	"version": "1.21.1",
+	"sourceUrl": "https://pypi.org/project/mcp/",
+	"source": "pypi",
+	"downloads": {
+		"pypi": 1.09
+	},
+	"license": "MIT",
+	"author": "Anthropic, PBC.",
+	"repository": "https://github.com/modelcontextprotocol/python-sdk",
+	"keywords": [
+		"automation",
+		"git",
+		"llm",
+		"mcp"
+	],
+	"lastUpdated": "2025-11-14T13:33:16.973Z",
+	"categories": [
+		"Code & Development",
+		"AI & ML",
+		"Integration & Orchestration"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"pypi": [
+			{
+				"command": "pip install mcp==1.21.1",
+				"package": "mcp",
+				"version": "1.21.1"
+			},
+			{
+				"command": "uvx mcp==1.21.1",
+				"package": "mcp",
+				"version": "1.21.1"
+			}
+		],
+		"configExample": "{\n  \"mcpServers\": {\n    \"mcp\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"mcp\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "mcp",
+	"sourceUrls": {
+		"pypi": "https://pypi.org/project/mcp/"
+	}
+}

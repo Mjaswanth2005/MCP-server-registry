@@ -1,0 +1,45 @@
+{
+	"name": "mcp-server",
+	"description": "A custom MCP server that provides useful tools and resources for AI assistants",
+	"version": "0.1.4",
+	"sourceUrl": "https://pypi.org/project/mcp-server/",
+	"source": "pypi",
+	"downloads": {
+		"pypi": 0.81
+	},
+	"license": null,
+	"author": null,
+	"repository": null,
+	"keywords": [],
+	"lastUpdated": "2025-11-14T13:33:17.240Z",
+	"categories": [
+		"AI & ML"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"pypi": [
+			{
+				"command": "pip install mcp-server==0.1.4",
+				"package": "mcp-server",
+				"version": "0.1.4"
+			},
+			{
+				"command": "uvx mcp-server==0.1.4",
+				"package": "mcp-server",
+				"version": "0.1.4"
+			}
+		],
+		"configExample": "{\n  \"mcpServers\": {\n    \"mcpServer\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"mcp-server\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "mcp-server",
+	"sourceUrls": {
+		"pypi": "https://pypi.org/project/mcp-server/"
+	}
+}
