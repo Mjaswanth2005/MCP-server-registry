@@ -10,8 +10,8 @@ RUN npm install --include=dev
 # Copy source code
 COPY . ./
 
-# Build TypeScript
-RUN npx typescript
+# Build TypeScript using the direct path to tsc
+RUN ./node_modules/.bin/tsc
 
 # Remove devDependencies to reduce image size
 RUN npm prune --production
