@@ -8,6 +8,7 @@
       "title": "Data Sources",
       "description": "Which sources to scrape for MCP servers",
       "type": "array",
+      "editor": "select",
       "items": {
         "type": "string",
         "enum": ["github", "npm", "pypi"]
@@ -20,6 +21,7 @@
       "title": "Update Mode",
       "description": "Whether to perform full or incremental update",
       "type": "string",
+      "editor": "select",
       "enum": ["full", "incremental"],
       "default": "full"
     },
@@ -27,30 +29,35 @@
       "title": "Maximum Servers",
       "description": "Maximum number of servers to collect (optional)",
       "type": "integer",
+      "editor": "number",
       "minimum": 1
     },
     "minStars": {
       "title": "Minimum Stars",
       "description": "Minimum GitHub stars to include (optional, GitHub only)",
       "type": "integer",
+      "editor": "number",
       "minimum": 0
     },
     "includeReadme": {
       "title": "Include README",
       "description": "Whether to include README content in results",
       "type": "boolean",
+      "editor": "checkbox",
       "default": true
     },
     "githubToken": {
       "title": "GitHub Token",
       "description": "GitHub personal access token for increased rate limits (optional)",
       "type": "string",
+      "editor": "textfield",
       "isSecret": true
     },
     "runMode": {
       "title": "Run Mode",
       "description": "Test mode for limited runs or production for full execution",
       "type": "string",
+      "editor": "select",
       "enum": ["test", "production"],
       "default": "production"
     }

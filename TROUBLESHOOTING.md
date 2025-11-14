@@ -28,6 +28,49 @@ ls -la .actor/
 # - INPUT_SCHEMA.json
 ```
 
+### Error: "Input schema is not valid - Field schema.properties.X.editor is required"
+
+**Problem**: INPUT_SCHEMA.json is missing required `editor` fields.
+
+**Cause**: Apify requires an `editor` field for each property to specify the UI component type.
+
+**Solution**: Add `editor` field to all properties in `.actor/INPUT_SCHEMA.json`:
+
+```json
+{
+  "properties": {
+    "sources": {
+      "type": "array",
+      "editor": "select",
+      ...
+    },
+    "maxServers": {
+      "type": "integer",
+      "editor": "number",
+      ...
+    },
+    "includeReadme": {
+      "type": "boolean",
+      "editor": "checkbox",
+      ...
+    },
+    "githubToken": {
+      "type": "string",
+      "editor": "textfield",
+      ...
+    }
+  }
+}
+```
+
+**Valid editor types**:
+- `select` - Dropdown for enums or arrays
+- `textfield` - Single-line text input
+- `textarea` - Multi-line text input
+- `number` - Number input
+- `checkbox` - Boolean checkbox
+- `json` - JSON editor
+
 ### Error: "Version number must be MAJOR.MINOR"
 
 **Problem**: Apify rejects the version number format.
