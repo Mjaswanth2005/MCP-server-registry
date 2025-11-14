@@ -1,0 +1,41 @@
+{
+	"name": "mcp-proxy",
+	"description": "A TypeScript SSE proxy for MCP servers that use stdio transport.",
+	"version": "5.11.0",
+	"sourceUrl": "https://www.npmjs.com/package/mcp-proxy",
+	"source": "npm",
+	"downloads": {
+		"npm": 1.82
+	},
+	"license": "MIT",
+	"repository": "git+https://github.com/punkpeye/mcp-proxy.git",
+	"keywords": [
+		"MCP",
+		"SSE",
+		"proxy"
+	],
+	"lastUpdated": "2025-11-12T12:05:40.713Z",
+	"categories": [
+		"Uncategorized"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"npm": {
+			"command": "npm install mcp-proxy@5.11.0",
+			"package": "mcp-proxy",
+			"version": "5.11.0"
+		},
+		"configExample": "{\n  \"mcpServers\": {\n    \"mcpProxy\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"mcp-proxy\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "mcp-proxy",
+	"sourceUrls": {
+		"npm": "https://www.npmjs.com/package/mcp-proxy"
+	}
+}

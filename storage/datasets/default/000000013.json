@@ -1,0 +1,45 @@
+{
+	"name": "@upstash/context7-mcp",
+	"description": "MCP server for Context7",
+	"version": "1.0.27",
+	"sourceUrl": "https://www.npmjs.com/package/@upstash/context7-mcp",
+	"source": "npm",
+	"downloads": {
+		"npm": 1.89
+	},
+	"license": "MIT",
+	"repository": "git+https://github.com/upstash/context7.git",
+	"keywords": [
+		"modelcontextprotocol",
+		"mcp",
+		"context7",
+		"vibe-coding",
+		"developer tools",
+		"documentation",
+		"context"
+	],
+	"lastUpdated": "2025-11-13T12:16:20.478Z",
+	"categories": [
+		"AI & ML"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"npm": {
+			"command": "npm install @upstash/context7-mcp@1.0.27",
+			"package": "@upstash/context7-mcp",
+			"version": "1.0.27"
+		},
+		"configExample": "{\n  \"mcpServers\": {\n    \"@upstash/context7Mcp\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"@upstash/context7-mcp\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "upstash-context7-mcp",
+	"sourceUrls": {
+		"npm": "https://www.npmjs.com/package/@upstash/context7-mcp"
+	}
+}

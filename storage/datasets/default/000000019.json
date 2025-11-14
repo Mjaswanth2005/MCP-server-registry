@@ -1,0 +1,43 @@
+{
+	"name": "@langchain/mcp-adapters",
+	"description": "LangChain.js adapters for Model Context Protocol (MCP)",
+	"version": "1.0.0",
+	"sourceUrl": "https://www.npmjs.com/package/@langchain/mcp-adapters",
+	"source": "npm",
+	"downloads": {
+		"npm": 1.76
+	},
+	"license": "MIT",
+	"repository": "git+ssh://git@github.com/langchain-ai/langchainjs.git",
+	"keywords": [
+		"langchain",
+		"mcp",
+		"model-context-protocol",
+		"ai",
+		"tools"
+	],
+	"lastUpdated": "2025-10-18T00:07:05.031Z",
+	"categories": [
+		"AI & ML"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"npm": {
+			"command": "npm install @langchain/mcp-adapters@1.0.0",
+			"package": "@langchain/mcp-adapters",
+			"version": "1.0.0"
+		},
+		"configExample": "{\n  \"mcpServers\": {\n    \"@langchain/mcpAdapters\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"@langchain/mcp-adapters\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "langchain-mcp-adapters",
+	"sourceUrls": {
+		"npm": "https://www.npmjs.com/package/@langchain/mcp-adapters"
+	}
+}

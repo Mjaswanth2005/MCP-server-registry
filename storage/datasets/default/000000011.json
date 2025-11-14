@@ -1,0 +1,37 @@
+{
+	"name": "@playwright/mcp",
+	"description": "Playwright Tools for MCP",
+	"version": "0.0.46",
+	"sourceUrl": "https://www.npmjs.com/package/@playwright/mcp",
+	"source": "npm",
+	"downloads": {
+		"npm": 2.06
+	},
+	"license": "Apache-2.0",
+	"repository": "git+https://github.com/microsoft/playwright-mcp.git",
+	"keywords": [],
+	"lastUpdated": "2025-11-07T21:59:14.727Z",
+	"categories": [
+		"Uncategorized"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"npm": {
+			"command": "npm install @playwright/mcp@0.0.46",
+			"package": "@playwright/mcp",
+			"version": "0.0.46"
+		},
+		"configExample": "{\n  \"mcpServers\": {\n    \"@playwright/mcp\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"@playwright/mcp\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "playwright-mcp",
+	"sourceUrls": {
+		"npm": "https://www.npmjs.com/package/@playwright/mcp"
+	}
+}

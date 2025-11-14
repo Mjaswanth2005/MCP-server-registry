@@ -1,0 +1,8 @@
+{
+  "sources": ["github", "npm", "pypi"],
+  "updateMode": "full",
+  "maxServers": 10,
+  "minStars": 5,
+  "includeReadme": false,
+  "runMode": "test"
+}

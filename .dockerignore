@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Tests
+__tests__/
+*.test.ts
+jest.config.js
+
+# Documentation
+*.md
+!README.md
+
+# Git
+.git/
+.github/
+.gitignore
+
+# IDE
+.vscode/
+.kiro/
+
+# Local storage
+apify_storage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local

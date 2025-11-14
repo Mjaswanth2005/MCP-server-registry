@@ -1,0 +1,52 @@
+{
+	"name": "mcp-server-notion",
+	"description": "A Model Context Protocol Tool for Notion integration and automation",
+	"version": "0.2.1",
+	"sourceUrl": "https://pypi.org/project/mcp-server-notion/",
+	"source": "pypi",
+	"downloads": {
+		"pypi": 0.75
+	},
+	"license": "MIT",
+	"author": "shpark",
+	"repository": null,
+	"keywords": [
+		"automation",
+		"llm",
+		"mcp",
+		"notion",
+		"tool"
+	],
+	"lastUpdated": "2025-11-14T13:33:17.508Z",
+	"categories": [
+		"AI & ML",
+		"Integration & Orchestration"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"pypi": [
+			{
+				"command": "pip install mcp-server-notion==0.2.1",
+				"package": "mcp-server-notion",
+				"version": "0.2.1"
+			},
+			{
+				"command": "uvx mcp-server-notion==0.2.1",
+				"package": "mcp-server-notion",
+				"version": "0.2.1"
+			}
+		],
+		"configExample": "{\n  \"mcpServers\": {\n    \"mcpServerNotion\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"mcp-server-notion\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "mcp-server-notion",
+	"sourceUrls": {
+		"pypi": "https://pypi.org/project/mcp-server-notion/"
+	}
+}

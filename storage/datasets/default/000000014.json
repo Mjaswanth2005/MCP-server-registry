@@ -1,0 +1,36 @@
+{
+	"name": "@supabase/mcp-utils",
+	"description": "MCP utilities",
+	"version": "0.2.4",
+	"sourceUrl": "https://www.npmjs.com/package/@supabase/mcp-utils",
+	"source": "npm",
+	"downloads": {
+		"npm": 1.64
+	},
+	"license": "Apache-2.0",
+	"keywords": [],
+	"lastUpdated": "2025-10-31T17:35:49.901Z",
+	"categories": [
+		"Uncategorized"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"npm": {
+			"command": "npm install @supabase/mcp-utils@0.2.4",
+			"package": "@supabase/mcp-utils",
+			"version": "0.2.4"
+		},
+		"configExample": "{\n  \"mcpServers\": {\n    \"@supabase/mcpUtils\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"@supabase/mcp-utils\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "supabase-mcp-utils",
+	"sourceUrls": {
+		"npm": "https://www.npmjs.com/package/@supabase/mcp-utils"
+	}
+}

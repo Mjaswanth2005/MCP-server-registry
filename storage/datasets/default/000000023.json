@@ -1,0 +1,45 @@
+{
+	"name": "mcp-server-github",
+	"description": "poneglyph",
+	"version": "0.1.0",
+	"sourceUrl": "https://pypi.org/project/mcp-server-github/",
+	"source": "pypi",
+	"downloads": {
+		"pypi": 0.61
+	},
+	"license": "MIT",
+	"author": null,
+	"repository": "https://github.com/soufelhabti/mcp-server-github",
+	"keywords": [],
+	"lastUpdated": "2025-11-14T13:33:17.877Z",
+	"categories": [
+		"Code & Development"
+	],
+	"compatibility": [
+		{
+			"client": "Unknown",
+			"status": "unknown",
+			"notes": "No compatibility information found in documentation"
+		}
+	],
+	"installationInstructions": {
+		"pypi": [
+			{
+				"command": "pip install mcp-server-github==0.1.0",
+				"package": "mcp-server-github",
+				"version": "0.1.0"
+			},
+			{
+				"command": "uvx mcp-server-github==0.1.0",
+				"package": "mcp-server-github",
+				"version": "0.1.0"
+			}
+		],
+		"configExample": "{\n  \"mcpServers\": {\n    \"mcpServerGithub\": {\n      \"command\": \"npm\",\n      \"args\": [\"exec\", \"mcp-server-github\"]\n    }\n  }\n}"
+	},
+	"isActive": true,
+	"normalizedName": "mcp-server-github",
+	"sourceUrls": {
+		"pypi": "https://pypi.org/project/mcp-server-github/"
+	}
+}
