@@ -1,4 +1,38 @@
 {
+  "actorSpecification": {
+    "name": "mcp-server-registry",
+    "title": "MCP Server Registry",
+    "version": "1.0.0",
+    "buildTag": "latest",
+    "main": "main.js",
+    "dockerImage": "apify/actor-node:20-chrome",
+    "description": "Discovers and catalogs Model Context Protocol (MCP) servers across GitHub, NPM, and PyPI with deduplication, categorization, and compatibility information.",
+    "env": {
+      "GITHUB_TOKEN": {
+        "type": "string",
+        "required": false,
+        "description": "Optional GitHub token to increase rate limits"
+      },
+      "LOG_LEVEL": {
+        "type": "string",
+        "required": false,
+        "default": "INFO"
+      }
+    },
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["github","npm","pypi"] }
+        },
+        "maxServers": { "type": "integer", "minimum": 1 },
+        "includeReadme": { "type": "boolean" },
+        "githubToken": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
   "name": "mcp-server-registry",
   "title": "MCP Server Registry",
   "description": "Discovers and catalogs Model Context Protocol (MCP) servers across GitHub, NPM, and PyPI with deduplication, categorization, and compatibility information.",
@@ -18,21 +52,5 @@
     "dataset": "default",
     "keyValueStore": "default",
     "requestQueue": "default"
-  },
-  "env": {
-    "GITHUB_TOKEN": {
-      "type": "string",
-      "required": false,
-      "description": "Optional GitHub token to increase rate limits"
-    },
-    "LOG_LEVEL": {
-      "type": "string",
-      "required": false,
-      "default": "INFO"
-    }
-  },
-  "input": {
-    "type": "object",
-    "additionalProperties": true
   }
 }
