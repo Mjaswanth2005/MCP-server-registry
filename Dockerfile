@@ -4,14 +4,14 @@ FROM apify/actor-node:20
 # Copy package files
 COPY package*.json ./
 
-# Install ALL dependencies including devDependencies
-RUN npm install
+# Install ALL dependencies including devDependencies (override NODE_ENV)
+RUN npm install --include=dev
 
 # Copy source code
 COPY . ./
 
-# Build TypeScript using npx to ensure tsc is found
-RUN npx tsc
+# Build TypeScript
+RUN npx typescript
 
 # Remove devDependencies to reduce image size
 RUN npm prune --production
