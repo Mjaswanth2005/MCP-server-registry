@@ -64,12 +64,31 @@ class MCPRegistryActor {
    * @param input - Actor input configuration
    * @param runId - Unique identifier for this run
    */
+  /**
+   * Creates a new MCPRegistryActor instance
+   * @param input - Actor input configuration
+   * @param runId - Unique identifier for this actor run
+   */
   constructor(input: ActorInput, runId: string) {
     this.input = { ...DEFAULT_INPUT, ...input } as ActorInput;
     this.runId = runId;
     this.startTime = Date.now();
   }
 
+  /**
+   * Main execution method that runs the complete actor workflow
+   * 
+   * Workflow:
+   * 1. Validate input parameters
+   * 2. Scrape all configured sources in parallel
+   * 3. Process and validate server metadata
+   * 4. Categorize servers and check compatibility
+   * 5. Deduplicate across sources
+   * 6. Write results to dataset
+   * 7. Generate and save run metadata
+   * 
+   * @throws {Error} If input validation fails or critical errors occur
+   */
   async run(): Promise<void> {
     try {
       logger.info('MCP Server Registry Actor Started', {
@@ -160,6 +179,12 @@ class MCPRegistryActor {
     }
   }
 
+  /**
+   * Validates actor input parameters against schema requirements
+   * 
+   * @throws {Error} If validation fails for any required parameter
+   * @private
+   */
   private async validateInput(): Promise<void> {
     if (!this.input.sources || this.input.sources.length === 0) {
       throw new Error('At least one source must be specified');
@@ -183,6 +208,15 @@ class MCPRegistryActor {
     logger.info('Input validation passed');
   }
 
+  /**
+   * Scrapes all configured sources in parallel
+   * 
+   * Creates scraper instances for each enabled source and runs them concurrently.
+   * Collects rate limit events and errors from each scraper.
+   * 
+   * @returns Array of server metadata from all sources
+   * @private
+   */
   private async scrapeAllSources(): Promise<ServerMetadata[]> {
     const allServers: ServerMetadata[] = [];
     const scrapers: Array<[string, any]> = [];
@@ -232,6 +266,13 @@ class MCPRegistryActor {
     return allServers;
   }
 
+  /**
+   * Calculates the number of days since a server was last updated
+   * 
+   * @param lastUpdated - ISO 8601 timestamp of last update
+   * @returns Number of days since last update
+   * @private
+   */
   private calculateDaysSinceUpdate(lastUpdated: string): number {
     const lastDate = new Date(lastUpdated);
     const now = new Date();
@@ -239,6 +280,17 @@ class MCPRegistryActor {
     return Math.floor(diffMs / (1000 * 60 * 60 * 24));
   }
 
+  /**
+   * Generates comprehensive metadata about the actor run
+   * 
+   * Includes statistics by source, category, rate limit events, validation failures,
+   * and overall run metrics.
+   * 
+   * @param allServers - All servers scraped before deduplication
+   * @param duplicatesRemoved - Number of duplicate servers removed
+   * @returns Complete run metadata object
+   * @private
+   */
   private generateMetadata(
     allServers: ServerMetadata[],
     duplicatesRemoved: number
@@ -278,6 +330,12 @@ class MCPRegistryActor {
   }
 }
 
+/**
+ * Main entry point function for the Apify actor
+ * 
+ * Initializes the actor with input parameters and starts execution.
+ * Handles test mode by limiting maxServers to 5.
+ */
 async function main() {
   const input: Partial<ActorInput> = (await Actor.getInput()) as Partial<ActorInput>;
 

@@ -1,5 +1,10 @@
 /**
  * Compatibility checker for AI clients
+ * 
+ * Detects which AI clients (Claude, OpenAI, Kiro, etc.) are compatible
+ * with MCP servers by analyzing documentation and configuration examples.
+ * 
+ * @module compatibility
  */
 
 import { Log } from '@apify/log';
@@ -8,7 +13,19 @@ import type { ServerMetadata, CompatibilityInfo } from './types.js';
 
 const CLIENT_NAMES = ['Claude', 'OpenAI', 'Kiro', 'Anthropic', 'ChatGPT', 'GPT'];
 
+/**
+ * Checks AI client compatibility for MCP servers
+ */
 export class CompatibilityChecker {
+  /**
+   * Checks which AI clients are compatible with a server
+   * 
+   * Searches description and README for mentions of client names
+   * and configuration examples. Never executes code.
+   * 
+   * @param server - Server metadata to check
+   * @returns Array of compatibility information for detected clients
+   */
   async check(server: ServerMetadata): Promise<CompatibilityInfo[]> {
     const compatibility: CompatibilityInfo[] = [];
     const detectedClients = new Set<string>();

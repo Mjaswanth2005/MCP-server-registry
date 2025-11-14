@@ -252,10 +252,7 @@
     - Include usage examples for common scenarios
     - _Requirements: 10.3_
 
-  - [ ] 13.2 Add inline code documentation
-
-
-
+  - [x] 13.2 Add inline code documentation
 
     - Add JSDoc comments to all public functions and interfaces
     - Document complex algorithms and business logic
@@ -293,38 +290,49 @@
     - Verify actor appears in Apify console
     - _Requirements: 10.1_
 
-- [ ] 15. Test actor execution
-  - [ ] 15.1 Test with default input parameters
+
+- [x] 15. Test actor execution
+
+
+  - [x] 15.1 Test with default input parameters
+
     - Run actor with no input (use defaults)
     - Verify all three sources are scraped
     - Verify dataset contains server records
     - _Requirements: 10.5, NFR-9_
+
 
   - [ ] 15.2 Test with single source
     - Run actor with only GitHub source
     - Verify only GitHub servers are scraped
     - _Requirements: 8.1_
 
+
   - [ ] 15.3 Test with maxServers limit
     - Run actor with maxServers set to 10
     - Verify dataset contains at most 10 records
+
     - _Requirements: 8.2_
 
   - [ ] 15.4 Test with includeReadme disabled
     - Run actor with includeReadme set to false
+
     - Verify README fields are empty or omitted
     - _Requirements: 8.3_
 
-  - [ ] 15.5 Verify deduplication across sources
+  - [x] 15.5 Verify deduplication across sources
+
     - Check that servers found in multiple sources appear only once
     - Verify merged data includes information from all sources
     - _Requirements: 5.5, NFR-7_
 
-  - [ ] 15.6 Verify error handling
+  - [x] 15.6 Verify error handling
+
     - Test with invalid GitHub token
     - Verify actor continues with other sources
     - Check error logging in run metadata
     - _Requirements: NFR-5, NFR-6, NFR-8_
+
 
   - [ ] 15.7 Verify data export formats
     - Export dataset as JSON

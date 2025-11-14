@@ -1,10 +1,27 @@
 /**
  * Installation instruction generator for MCP servers
+ * 
+ * Generates installation commands and configuration examples
+ * for NPM and PyPI packages.
+ * 
+ * @module installationGenerator
  */
 
 import type { ServerMetadata, InstallationInstructions, InstallCommand } from './types.js';
 
+/**
+ * Generates installation instructions for MCP servers
+ */
 export class InstallationGenerator {
+  /**
+   * Generates installation instructions for a server
+   * 
+   * Creates package manager commands (npm, pip, uvx) and
+   * configuration examples based on server metadata.
+   * 
+   * @param server - Server metadata
+   * @returns Installation instructions object
+   */
   generateInstructions(server: ServerMetadata): InstallationInstructions {
     const instructions: InstallationInstructions = {};
 

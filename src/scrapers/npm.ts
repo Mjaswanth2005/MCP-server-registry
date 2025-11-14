@@ -1,5 +1,10 @@
 /**
  * NPM Registry scraper for discovering MCP servers
+ * 
+ * Searches NPM registry for packages with MCP-related keywords.
+ * Fetches download statistics and detailed package metadata.
+ * 
+ * @module scrapers/npm
  */
 
 import axios from 'axios';
@@ -11,14 +16,30 @@ const NPM_SEARCH_API = 'https://registry.npmjs.org/-/v1/search';
 const NPM_REGISTRY_API = 'https://registry.npmjs.org';
 const REQUEST_TIMEOUT = 10000; // 10 seconds
 
+/**
+ * Scrapes NPM registry for MCP servers
+ */
 export class NPMScraper {
   private rateLimitEvents: RateLimitEvent[] = [];
   private runId: string;
 
+  /**
+   * Creates a new NPM scraper
+   * @param runId - Unique identifier for this actor run
+   */
   constructor(runId: string = 'unknown') {
     this.runId = runId;
   }
 
+  /**
+   * Scrapes NPM registry for MCP servers
+   * 
+   * Searches by keywords (mcp, mcp-server, model-context-protocol).
+   * Fetches download statistics and deduplicates results.
+   * 
+   * @param input - Actor input configuration
+   * @returns Array of server metadata from NPM
+   */
   async scrape(input: ActorInput): Promise<ServerMetadata[]> {
     const servers: ServerMetadata[] = [];
     const keywords = ['mcp', 'mcp-server', 'model-context-protocol'];
@@ -158,6 +179,10 @@ export class NPMScraper {
     }
   }
 
+  /**
+   * Returns all rate limit events encountered during scraping
+   * @returns Array of rate limit event records
+   */
   getRateLimitEvents(): RateLimitEvent[] {
     return this.rateLimitEvents;
   }

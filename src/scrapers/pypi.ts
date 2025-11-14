@@ -1,5 +1,10 @@
 /**
  * PyPI scraper for discovering MCP servers
+ * 
+ * Searches PyPI for Python packages with MCP-related keywords.
+ * Uses PyPI JSON API to fetch package metadata.
+ * 
+ * @module scrapers/pypi
  */
 
 import axios from 'axios';
@@ -11,14 +16,30 @@ const PYPI_SEARCH_API = 'https://pypi.org/pypi/_/json'; // Requires custom searc
 const PYPI_JSON_API = 'https://pypi.org/pypi';
 const REQUEST_TIMEOUT = 10000; // 10 seconds
 
+/**
+ * Scrapes PyPI for MCP servers
+ */
 export class PyPIScraper {
   private rateLimitEvents: RateLimitEvent[] = [];
   private runId: string;
 
+  /**
+   * Creates a new PyPI scraper
+   * @param runId - Unique identifier for this actor run
+   */
   constructor(runId: string = 'unknown') {
     this.runId = runId;
   }
 
+  /**
+   * Scrapes PyPI for MCP servers
+   * 
+   * Searches by keywords (mcp, mcp-server, model-context-protocol).
+   * Fetches package metadata and deduplicates results.
+   * 
+   * @param input - Actor input configuration
+   * @returns Array of server metadata from PyPI
+   */
   async scrape(input: ActorInput): Promise<ServerMetadata[]> {
     const servers: ServerMetadata[] = [];
     const keywords = ['mcp', 'mcp-server', 'model-context-protocol'];
@@ -159,6 +180,10 @@ export class PyPIScraper {
     }
   }
 
+  /**
+   * Returns all rate limit events encountered during scraping
+   * @returns Array of rate limit event records
+   */
   getRateLimitEvents(): RateLimitEvent[] {
     return this.rateLimitEvents;
   }

@@ -1,5 +1,10 @@
 /**
  * Categorization service for MCP servers
+ * 
+ * Assigns servers to functional categories based on keyword matching
+ * in name, description, keywords, and README content.
+ * 
+ * @module categorizer
  */
 
 import { Log } from '@apify/log';
@@ -7,14 +12,30 @@ const logger = new Log();
 import type { ServerMetadata, Category } from './types.js';
 import { CATEGORIES } from './types.js';
 
+/**
+ * Categorizes MCP servers based on functionality
+ */
 export class Categorizer {
   private categories: Category[];
 
+  /**
+   * Creates a new Categorizer instance
+   * @param categories - Optional custom category definitions (uses CATEGORIES from types.ts by default)
+   */
   constructor(categories?: Category[]) {
     // Import CATEGORIES at runtime to avoid circular dependency
     this.categories = categories || [];
   }
 
+  /**
+   * Categorizes a server by analyzing its metadata
+   * 
+   * Searches name, description, keywords, and README for category keywords.
+   * A server can belong to multiple categories.
+   * 
+   * @param server - Server metadata to categorize
+   * @returns Array of category names (defaults to ["Uncategorized"] if no matches)
+   */
   async categorize(server: ServerMetadata): Promise<string[]> {
     const categories = new Set<string>();
 
@@ -103,7 +124,8 @@ export class Categorizer {
   }
 
   /**
-   * Get all available categories
+   * Returns all available category definitions
+   * @returns Array of category objects with names and keywords
    */
   async getCategories(): Promise<Category[]> {
     return CATEGORIES;

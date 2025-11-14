@@ -1,5 +1,10 @@
 /**
  * GitHub scraper for discovering MCP servers
+ * 
+ * Searches GitHub repositories by topics and code patterns to find MCP servers.
+ * Implements exponential backoff for rate limiting and respects GitHub API limits.
+ * 
+ * @module scrapers/github
  */
 
 import { Octokit } from 'octokit';
@@ -10,11 +15,19 @@ import type { ServerMetadata, ActorInput, RateLimitEvent } from '../types.js';
 const RATE_LIMIT_BACKOFF_DELAYS = [60000, 120000, 300000]; // 60s, 120s, 300s
 const CONCURRENCY_LIMIT = 3;
 
+/**
+ * Scrapes GitHub for MCP servers
+ */
 export class GitHubScraper {
   private octokit: Octokit;
   private rateLimitEvents: RateLimitEvent[] = [];
   private runId: string;
 
+  /**
+   * Creates a new GitHub scraper
+   * @param githubToken - Optional GitHub personal access token for higher rate limits
+   * @param runId - Unique identifier for this actor run
+   */
   constructor(githubToken?: string, runId: string = 'unknown') {
     this.runId = runId;
     this.octokit = new Octokit({
@@ -22,6 +35,15 @@ export class GitHubScraper {
     });
   }
 
+  /**
+   * Scrapes GitHub for MCP servers
+   * 
+   * Searches by topics (mcp-server, model-context-protocol) and code patterns.
+   * Deduplicates results and respects maxServers limit.
+   * 
+   * @param input - Actor input configuration
+   * @returns Array of server metadata from GitHub
+   */
   async scrape(input: ActorInput): Promise<ServerMetadata[]> {
     const servers: ServerMetadata[] = [];
     const seenRepos = new Set<string>();
@@ -253,6 +275,10 @@ export class GitHubScraper {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  /**
+   * Returns all rate limit events encountered during scraping
+   * @returns Array of rate limit event records
+   */
   getRateLimitEvents(): RateLimitEvent[] {
     return this.rateLimitEvents;
   }

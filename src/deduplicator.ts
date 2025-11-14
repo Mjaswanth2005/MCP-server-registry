@@ -1,5 +1,11 @@
 /**
  * Deduplicator for managing server records and handling duplicates
+ * 
+ * Merges duplicate servers found across multiple sources using normalized
+ * name matching and repository URL matching. Supports both full and
+ * incremental update modes with persistent state.
+ * 
+ * @module deduplicator
  */
 
 import { KeyValueStore } from 'apify';
@@ -14,10 +20,18 @@ import type {
 } from './types.js';
 import { DataProcessor } from './processor.js';
 
+/**
+ * Manages deduplication of servers across multiple sources
+ */
 export class Deduplicator {
   private state: DeduplicationState;
   private processor: DataProcessor;
 
+  /**
+   * Creates a new Deduplicator instance
+   * @param runId - Unique identifier for this actor run
+   * @param updateMode - 'full' to replace all data, 'incremental' to merge with existing
+   */
   constructor(runId: string, updateMode: 'full' | 'incremental' = 'full') {
     this.processor = new DataProcessor();
     this.state = {
@@ -30,6 +44,11 @@ export class Deduplicator {
     };
   }
 
+  /**
+   * Loads deduplication state from Key-Value Store
+   * 
+   * Only loads state in incremental mode. In full mode, starts fresh.
+   */
   async loadState(): Promise<void> {
     try {
       const store = await KeyValueStore.open();
@@ -49,6 +68,9 @@ export class Deduplicator {
     }
   }
 
+  /**
+   * Saves deduplication state to Key-Value Store for future incremental runs
+   */
   async saveState(): Promise<void> {
     try {
       const store = await KeyValueStore.open();
@@ -70,6 +92,18 @@ export class Deduplicator {
     }
   }
 
+  /**
+   * Deduplicates servers using normalized name and repository URL matching
+   * 
+   * When duplicates are found, merges data preferring:
+   * - GitHub for stars/forks
+   * - Sum of downloads from all sources
+   * - Longer README
+   * - Most recent version
+   * 
+   * @param servers - Array of server records to deduplicate
+   * @returns Array of unique server records
+   */
   async deduplicate(servers: ServerRecord[]): Promise<ServerRecord[]> {
     const deduplicated: ServerRecord[] = [];
     let duplicatesRemoved = 0;
@@ -175,10 +209,18 @@ export class Deduplicator {
     logger.debug(`Merged duplicate: ${existing.name}`);
   }
 
+  /**
+   * Returns the current deduplication state
+   * @returns Current state object
+   */
   getState(): DeduplicationState {
     return this.state;
   }
 
+  /**
+   * Returns the total number of unique servers tracked
+   * @returns Count of unique servers
+   */
   getDuplicateCount(): number {
     // Calculate based on total servers processed vs deduplicated
     return Math.max(0, this.state.serverMap.size);

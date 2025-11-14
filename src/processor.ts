@@ -1,14 +1,28 @@
 /**
  * Data processor for normalizing and validating server metadata
+ * 
+ * Handles validation, sanitization, normalization, and popularity scoring
+ * for server metadata scraped from various sources.
+ * 
+ * @module processor
  */
 
 import { Log } from '@apify/log';
 const logger = new Log();
 import type { ServerMetadata, ValidationFailure } from './types.js';
 
+/**
+ * Processes and validates server metadata from scrapers
+ */
 export class DataProcessor {
   private validationFailures: ValidationFailure[] = [];
 
+  /**
+   * Processes an array of server metadata, validating and normalizing each record
+   * 
+   * @param metadata - Array of raw server metadata from scrapers
+   * @returns Array of validated and normalized server metadata
+   */
   async process(metadata: ServerMetadata[]): Promise<ServerMetadata[]> {
     const processed: ServerMetadata[] = [];
 
@@ -55,7 +69,13 @@ export class DataProcessor {
   }
 
   /**
-   * Normalize a server name for deduplication
+   * Normalizes a server name for deduplication
+   * 
+   * Converts to lowercase, replaces special characters with hyphens,
+   * collapses multiple hyphens, and trims leading/trailing hyphens.
+   * 
+   * @param name - Original server name
+   * @returns Normalized name suitable for deduplication
    */
   normalizeName(name: string): string {
     return name
@@ -67,7 +87,12 @@ export class DataProcessor {
   }
 
   /**
-   * Extract and normalize repository URL for deduplication
+   * Extracts and normalizes repository URL for deduplication
+   * 
+   * Handles GitHub URLs specially by removing .git suffix and normalizing format.
+   * 
+   * @param url - Original repository URL
+   * @returns Normalized URL or undefined if invalid
    */
   normalizeRepositoryUrl(url?: string): string | undefined {
     if (!url) {
@@ -96,8 +121,14 @@ export class DataProcessor {
   }
 
   /**
-   * Calculate popularity score
+   * Calculates popularity score for a server
+   * 
    * Formula: (stars * 0.4) + (log10(downloads + 1) * 0.3) + (recency_factor * 0.3)
+   * where recency_factor = max(0, 1 - days_since_update / 365)
+   * 
+   * @param server - Server metadata
+   * @returns Popularity score (0-100+)
+   * @private
    */
   private calculatePopularityScore(server: ServerMetadata): number {
     const stars = server.stars || 0;
@@ -202,6 +233,10 @@ export class DataProcessor {
     logger.warning(`Validation failure - ${serverName}.${field}: ${reason}`);
   }
 
+  /**
+   * Returns all validation failures encountered during processing
+   * @returns Array of validation failure records
+   */
   getValidationFailures(): ValidationFailure[] {
     return this.validationFailures;
   }

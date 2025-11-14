@@ -297,10 +297,56 @@ src/
     └── pypi.ts          # PyPI package scraper
 ```
 
+## Documentation
+
+- **[Quick Start Guide](QUICKSTART.md)** - Get up and running in minutes
+- **[Testing Guide](TESTING.md)** - Comprehensive testing documentation
+- **[Implementation Summary](IMPLEMENTATION_SUMMARY.md)** - Architecture and technical details
+
+## Development
+
+### Setup
+```bash
+npm install
+npm run build
+npm test
+```
+
+### Scripts
+- `npm run build` - Compile TypeScript
+- `npm test` - Run all tests
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:coverage` - Generate test coverage report
+- `npm start` - Run actor locally
+- `npm run dev` - Run in development mode
+- `npm run lint` - Lint source code
+
+### Project Structure
+```
+src/
+├── main.ts                    # Actor entry point
+├── types.ts                   # Data models
+├── processor.ts               # Data validation
+├── categorizer.ts             # Category assignment
+├── compatibility.ts           # AI client detection
+├── deduplicator.ts            # Duplicate handling
+├── installationGenerator.ts   # Installation instructions
+└── scrapers/                  # Source scrapers
+    ├── github.ts
+    ├── npm.ts
+    └── pypi.ts
+
+__tests__/                     # Unit tests
+```
+
 ## License
 
 Apache 2.0
 
 ## Support
 
-For issues or feature requests, please refer to the project documentation or contact support.
+For issues or feature requests:
+1. Check the [Quick Start Guide](QUICKSTART.md)
+2. Review the [Testing Guide](TESTING.md)
+3. See the [Implementation Summary](IMPLEMENTATION_SUMMARY.md)
+4. Check actor logs and run metadata
