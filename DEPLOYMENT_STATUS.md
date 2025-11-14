@@ -20,6 +20,13 @@ All deployment blockers have been resolved. The actor is now properly configured
 
 **Status**: ✅ Resolved
 
+### ✅ Issue 3: Invalid Version Number
+**Error**: `Version number must be MAJOR.MINOR, where MAJOR and MINOR is a number in range from 0 to 99`
+
+**Fix**: Changed version from `1.0.0` to `1.0` (Apify uses MAJOR.MINOR format, not semantic versioning)
+
+**Status**: ✅ Resolved
+
 ## Current Configuration
 
 ### File Structure ✅
@@ -38,7 +45,7 @@ Dockerfile               ✅ Configured for Apify Node.js 20
   "actorSpecification": 1,
   "name": "mcp-server-registry",
   "title": "MCP Server Registry",
-  "version": "1.0.0",
+  "version": "1.0",
   "dockerfile": "./Dockerfile",
   "readme": "./README.md",
   "input": "./INPUT_SCHEMA.json",

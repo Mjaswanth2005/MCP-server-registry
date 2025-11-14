@@ -28,6 +28,27 @@ ls -la .actor/
 # - INPUT_SCHEMA.json
 ```
 
+### Error: "Version number must be MAJOR.MINOR"
+
+**Problem**: Apify rejects the version number format.
+
+**Cause**: Apify expects version in `MAJOR.MINOR` format (e.g., `1.0`), not semantic versioning `MAJOR.MINOR.PATCH` (e.g., `1.0.0`).
+
+**Solution**: Update the version in `.actor/actor.json`:
+```json
+{
+  "version": "1.0"
+}
+```
+
+**Valid formats**:
+- ✅ `1.0`
+- ✅ `2.5`
+- ✅ `10.99`
+- ❌ `1.0.0` (too many parts)
+- ❌ `1` (missing MINOR)
+- ❌ `100.0` (MAJOR > 99)
+
 ### Error: ".actor/actor.json has invalid format" - storages.dataset
 
 **Problem**: The `storages.dataset` configuration in actor.json is invalid.
@@ -459,6 +480,8 @@ If issues persist:
 | Error | Cause | Solution |
 |-------|-------|----------|
 | EISDIR | Wrong file location | Move INPUT_SCHEMA.json to .actor/ |
+| Version format | Invalid version format | Use MAJOR.MINOR (e.g., 1.0) not 1.0.0 |
+| Invalid actor.json | Missing dataset views | Add views configuration |
 | ENOENT | Missing file | Check file exists |
 | 403 | Rate limit | Add GitHub token |
 | 429 | Rate limit | Wait or reduce requests |
