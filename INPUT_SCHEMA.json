@@ -1,0 +1,59 @@
+{
+  "title": "MCP Server Registry Input",
+  "description": "Configuration for discovering and cataloging MCP servers",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "sources": {
+      "title": "Data Sources",
+      "description": "Which sources to scrape for MCP servers",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["github", "npm", "pypi"]
+      },
+      "default": ["github", "npm", "pypi"],
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "updateMode": {
+      "title": "Update Mode",
+      "description": "Whether to perform full or incremental update",
+      "type": "string",
+      "enum": ["full", "incremental"],
+      "default": "full"
+    },
+    "maxServers": {
+      "title": "Maximum Servers",
+      "description": "Maximum number of servers to collect (optional)",
+      "type": "integer",
+      "minimum": 1
+    },
+    "minStars": {
+      "title": "Minimum Stars",
+      "description": "Minimum GitHub stars to include (optional, GitHub only)",
+      "type": "integer",
+      "minimum": 0
+    },
+    "includeReadme": {
+      "title": "Include README",
+      "description": "Whether to include README content in results",
+      "type": "boolean",
+      "default": true
+    },
+    "githubToken": {
+      "title": "GitHub Token",
+      "description": "GitHub personal access token for increased rate limits (optional)",
+      "type": "string",
+      "isSecret": true
+    },
+    "runMode": {
+      "title": "Run Mode",
+      "description": "Test mode for limited runs or production for full execution",
+      "type": "string",
+      "enum": ["test", "production"],
+      "default": "production"
+    }
+  },
+  "required": []
+}

@@ -1,0 +1,41 @@
+{
+  "name": "mcp-server-registry-actor",
+  "version": "1.0.0",
+  "description": "Apify actor for discovering and cataloging MCP servers across GitHub, NPM, and PyPI",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node --loader ts-node/esm src/main.ts",
+    "dev": "ts-node --esm src/main.ts",
+    "lint": "eslint src --ext .ts",
+    "test": "jest"
+  },
+  "keywords": [
+    "apify",
+    "mcp",
+    "model-context-protocol",
+    "actor",
+    "scraper"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@apify/log": "^2.4.1",
+    "apify": "^3.1.0",
+    "axios": "^1.6.0",
+    "octokit": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.4",
+    "@typescript-eslint/parser": "^8.46.4",
+    "eslint": "^9.39.1",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+  
+}

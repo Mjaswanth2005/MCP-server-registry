@@ -1,0 +1,22 @@
+{
+  "actorSpecification": 1,
+  "name": "mcp-server-registry",
+  "title": "MCP Server Registry",
+  "description": "Discovers and catalogs Model Context Protocol (MCP) servers across GitHub, NPM, and PyPI with deduplication, categorization, and compatibility information.",
+  "version": "1.0.0",
+  "buildTag": "latest",
+  "dockerImage": "apify/actor-node:20-chrome",
+  "environment": {
+    "APIFY_MEMORY_MBYTES": 4096,
+    "APIFY_TIMEOUT_SECS": 3600
+  },
+  "resources": {
+    "monitoringApiErrorRate": 10,
+    "monitoringMemoryBytes": 268435456
+  },
+  "storages": {
+    "dataset": {
+      "maxAgeDays": 30
+    }
+  }
+}
