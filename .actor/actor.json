@@ -33,15 +33,36 @@
     }
   },
   "input": {
+    "title": "Input",
+    "schemaVersion": 1,
     "type": "object",
     "properties": {
       "sources": {
+        "title": "Sources",
+        "description": "Which sources to search for MCP servers",
         "type": "array",
+        "editor": "select",
         "items": { "type": "string", "enum": ["github","npm","pypi"] }
       },
-      "maxServers": { "type": "integer", "minimum": 1 },
-      "includeReadme": { "type": "boolean" },
-      "githubToken": { "type": "string" }
+      "maxServers": {
+        "title": "Max Servers",
+        "description": "Maximum number of servers to discover",
+        "type": "integer",
+        "editor": "number",
+        "minimum": 1
+      },
+      "includeReadme": {
+        "title": "Include README",
+        "description": "Whether to include README content in the output",
+        "type": "boolean",
+        "editor": "checkbox"
+      },
+      "githubToken": {
+        "title": "GitHub Token",
+        "description": "Optional GitHub token to increase rate limits",
+        "type": "string",
+        "editor": "textfield"
+      }
     },
     "additionalProperties": true
   }
