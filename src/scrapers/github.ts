@@ -49,31 +49,39 @@ export class GitHubScraper {
     const seenRepos = new Set<string>();
 
     try {
-      // Search by topics
-      const topicServers = await this.searchByTopics(input);
-      for (const server of topicServers) {
-        const key = server.repository || server.sourceUrl;
-        if (!seenRepos.has(key)) {
-          servers.push(server);
-          seenRepos.add(key);
+      // Search by topics (with timeout)
+      try {
+        const topicServers = await this.searchByTopics(input);
+        for (const server of topicServers) {
+          const key = server.repository || server.sourceUrl;
+          if (!seenRepos.has(key)) {
+            servers.push(server);
+            seenRepos.add(key);
+          }
         }
+      } catch (error) {
+        logger.error('GitHub topic search failed:', { error: error instanceof Error ? error.message : String(error) });
       }
 
-      // Search by code patterns
-      const codeServers = await this.searchByCode(input);
-      for (const server of codeServers) {
-        const key = server.repository || server.sourceUrl;
-        if (!seenRepos.has(key)) {
-          servers.push(server);
-          seenRepos.add(key);
+      // Search by code patterns (with timeout, requires auth)
+      try {
+        const codeServers = await this.searchByCode(input);
+        for (const server of codeServers) {
+          const key = server.repository || server.sourceUrl;
+          if (!seenRepos.has(key)) {
+            servers.push(server);
+            seenRepos.add(key);
+          }
         }
+      } catch (error) {
+        logger.error('GitHub code search failed:', { error: error instanceof Error ? error.message : String(error) });
       }
 
       logger.info(`GitHub: Found ${servers.length} MCP servers`);
       return servers.slice(0, input.maxServers);
     } catch (error) {
       logger.error('GitHub scraper error:', { error });
-      throw error;
+      return servers; // Return partial results instead of throwing
     }
   }
 
@@ -132,6 +140,13 @@ export class GitHubScraper {
 
   private async searchByCode(input: ActorInput): Promise<ServerMetadata[]> {
     const servers: ServerMetadata[] = [];
+    
+    // Skip code search if no GitHub token (requires authentication)
+    if (!input.githubToken) {
+      logger.info('Skipping GitHub code search (requires authentication token)');
+      return servers;
+    }
+    
     const patterns = ['filename:mcp*.json', 'filename:*mcp-server*.ts', 'filename:*mcp-server*.js'];
 
     for (const pattern of patterns) {
